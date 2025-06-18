@@ -1,0 +1,93 @@
+-- Galaxy Hub - Blox Fruits
+-- Script Completo para GitHub
+
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/u9c6yLzP"))() -- Biblioteca UI (exemplo)
+local Window = Library:CreateWindow("Galaxy Hub - Blox Fruits")
+
+-- Variáveis de controle
+local AutoFarmEnabled = false
+local AutoHakiEnabled = false
+local AutoStoreFruitEnabled = false
+local AutoMissionEnabled = false
+local FPSBoostEnabled = false
+
+-- Funções principais
+local function AutoFarm()
+    while AutoFarmEnabled do
+        wait(1)
+        -- Código para farm automático
+        -- Exemplo: Teleport para local de missão ou boss
+        print("Auto Farm rodando...")
+        -- Aqui você pode colocar seu código de farm real
+    end
+end
+
+local function AutoHaki()
+    while AutoHakiEnabled do
+        wait(0.5)
+        -- Código para ativar haki automaticamente
+        print("Auto Haki ativado...")
+    end
+end
+
+local function AutoStoreFruit()
+    while AutoStoreFruitEnabled do
+        wait(5)
+        -- Código para armazenar frutas automaticamente
+        print("Auto Store Fruit ativado...")
+    end
+end
+
+local function AutoMission()
+    while AutoMissionEnabled do
+        wait(2)
+        -- Código para auto completar missões
+        print("Auto Missão rodando...")
+    end
+end
+
+local function FPSBoost()
+    if FPSBoostEnabled then
+        game:GetService("Lighting").GlobalShadows = false
+        game:GetService("Workspace").Terrain.WaterWaveSize = 0
+        print("FPS Boost ativado!")
+    else
+        game:GetService("Lighting").GlobalShadows = true
+        game:GetService("Workspace").Terrain.WaterWaveSize = 1
+        print("FPS Boost desativado!")
+    end
+end
+
+-- Criação do Menu
+local TabFarm = Window:AddTab("Farm")
+TabFarm:AddToggle("Auto Farm", function(value)
+    AutoFarmEnabled = value
+    if value then spawn(AutoFarm) end
+end)
+
+TabFarm:AddToggle("Auto Missão", function(value)
+    AutoMissionEnabled = value
+    if value then spawn(AutoMission) end
+end)
+
+local TabCombat = Window:AddTab("Combate")
+TabCombat:AddToggle("Auto Haki", function(value)
+    AutoHakiEnabled = value
+    if value then spawn(AutoHaki) end
+end)
+
+local TabExtras = Window:AddTab("Extras")
+TabExtras:AddToggle("Auto Store Fruit", function(value)
+    AutoStoreFruitEnabled = value
+    if value then spawn(AutoStoreFruit) end
+end)
+
+TabExtras:AddToggle("FPS Boost", function(value)
+    FPSBoostEnabled = value
+    FPSBoost()
+end)
+
+-- Rodapé com assinatura
+Window:SetFooter("Galaxy Hub by You")
+
+print("Galaxy Hub carregado com sucesso!")
